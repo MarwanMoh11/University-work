@@ -1,0 +1,4 @@
+Pizza Type      Size  Quantity
+   mexican    12 inch  345
+   mexican     6 inch  187
+vegetarian     5 inch   63

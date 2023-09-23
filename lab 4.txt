@@ -1,0 +1,98 @@
+#include <iostream>
+
+using namespace std;
+
+class Box {
+private:
+	double length_; // Length of a box
+	double breadth_; // Breadth of a box
+	double height_; // Height of a box
+
+public:
+	double GetVolume() {
+		return length_ * breadth_ * height_;
+	}
+    void SetLength(double length) {
+        length_ = length;
+    }
+
+    void SetBreadth(double breadth) {
+        breadth_ = breadth;
+    }
+
+    void SetHeight(double height) {
+        height_ = height;
+    }
+
+    // Overload + operator to add two Box objects.
+    Box operator+(const Box& box) {
+        Box result;
+        result.length_ = this->length_ + box.length_;
+        result.breadth_ = this->breadth_ + box.breadth_;
+        result.height_ = this->height_ + box.height_;
+        return result;
+    }
+
+    Box operator-(const Box& box) {
+        Box result;
+        result.length_ = this->length_ - box.length_;
+        result.breadth_ = this->breadth_ - box.breadth_;
+        result.height_ = this->height_ - box.height_;
+        return result;
+    }
+
+    void operator++() {
+        length_++;
+        breadth_++;
+        height_++;
+    }
+
+    void operator++(int) {
+        length_++;
+        breadth_++;
+        height_++;
+    }
+};
+
+int main() {
+    Box box1; // Declare box1 of type Box
+    Box box2; // Declare box2 of type Box
+    Box box3; // Declare box3 of type Box
+    double volume = 0.0; // Store the volume of a box here
+    // Box 1 specification
+    box1.SetLength(6.0);
+    box1.SetBreadth(7.0);
+    box1.SetHeight(5.0);
+
+    // Box 2 specification
+    box2.SetLength(12.0);
+    box2.SetBreadth(13.0);
+    box2.SetHeight(10.0);
+
+    // Volume of box 1
+    volume = box1.GetVolume();
+    cout << "Volume of Box1: " << volume << endl;
+
+    // Volume of box 2
+    volume = box2.GetVolume();
+    cout << "Volume of Box2: " << volume << endl;
+
+    // Add two objects as follows:
+    box3 = box1 + box2;
+
+    // Volume of box 3
+    volume = box3.GetVolume();
+    cout << "Volume of Box3: " << volume << endl;
+
+    Box box4;
+    box4 = box2 - box1;
+    cout << "Volume of Box4: " << box4.GetVolume() << endl;
+
+    box4++;
+    cout << "Volume of Box4 after first increment: " << box4.GetVolume() << endl;
+
+    ++box4;
+    cout << "Volume of Box4 after second increment: " << box4.GetVolume() << endl;
+
+    return 0;
+}
